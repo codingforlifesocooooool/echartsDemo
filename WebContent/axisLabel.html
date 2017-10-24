@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>横坐标长度变化</title>
+    <script src="echarts.js"></script>
+    <script src="title.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width:100%;height: 100%"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                axisLabel:{
+                    formatter:function(val){
+                        var widthclient = document.body.clientWidth;
+                        return getEchartBarXAxisTitle(val,option.xAxis.data,widthclient,15,70,70);
+                    }
+                },
+                data: ["名字很长很长很长很长很长长很长很长很长很长长很长很长很长很长","羊毛衫很多多多多多多多多多多多多多多多多多多多多多多多多多","雪纺衫","裤子","高跟鞋","袜子","袜子2","袜子3","袜子4"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20,20,20,20]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+</body>
+</html>
